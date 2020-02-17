@@ -1,0 +1,190 @@
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register Here</title>
+<link rel="icon" type="image/png" href="images/logo.jpg"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="css/studentRegistration.css" type="text/css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+        <div class="container-fluid bg">
+            <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-12"></div>
+            <div class="col-md-2 col-sm-4 col-xs-12">
+                <p><i>${message}</i></p>  
+            </div>
+				<!-- Form Start -->
+            <form class="form-container" method="post" action="DatabaseServlet" name="registration_form" id="registration_form" onsubmit="return validateForm()">
+                <h1>Student Registration Form</h1>
+                <div class="form-group">
+                    <label for="firsName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="userName">Username:</label>
+                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="regNo">Registration No:</label>
+                    <input type="text" class="form-control" id="regNo" name="regNo" placeholder="Registration Number">
+                </div>
+                <div class="form-group">
+                    <label for="hostel">Hostel:</label>
+                    <select class="form-control" id="hostel" name="hostel">
+                        <option>Nairobi</option>
+                        <option>Mombasa</option>
+                        <option>Eldoret</option>
+                        <option>Maringo</option>
+                        <option>Ruwenzori</option>
+                        <option>Hollywood</option>
+                        <option>Buruburu</option>
+                        <option>Taifa</option>
+                        <option>Uganda</option>
+                        <option>Thornton</option>
+                        <option>Barret</option>
+                        <option>Old Hall</option>
+                        <option>Amboseli</option>
+                        <option>Victoria</option>
+                        <option>Elementaita</option>
+                        <option>Bogoria</option>
+                        <option>Tana</option>
+                        <option>Aberdares</option>
+                        <option>Turkana</option>
+                        <option>Mau</option>
+                        <option>Naivasha</option>
+                        <option>Tsavo</option>
+                        <option>Mama Ngina</option>
+                        <option>River View</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="block">Block:</label>
+                    <input type="text" class="form-control" id="block" name="block" placeholder="Block">
+                </div>
+                <div class="form-group">
+                    <label for="roomNumber">Room Number:</label>
+                    <input type="text" class="form-control" id="roomNumber" name="roomNo" placeholder="Room Number">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onkeyup='check();'> <span id='message'></span>
+                </div>
+                  <button type="submit" class="btn btn-success btn-block">Submit</button>
+                <br>
+                <button type="button" class="btn btn-danger btn-block" onClick="window.location.href='login.jsp'">Cancel</button>
+            </form>
+				<!-- Form End-->
+            <script>
+                function validateForm()                                    
+                    { 
+                        var firstName = document.forms["registration_form"]["firstName"];               
+                        var lastName = document.forms["registration_form"]["lastName"];
+                        var userName = document.forms["registration_form"]["userName"];
+                        var regNo = document.forms["registration_form"]["regNo"];
+                        var hostel = document.forms["registration_form"]["hostel"]; 
+                        var block = document.forms["registration_form"]["block"];
+                        var roomNo = document.forms["registration_form"]["roomNo"];
+                        var password = document.forms["registration_form"]["password"];
+                        var confirmPassword = document.forms["registration_form"]["confirmPassword"]; 
+
+                        if (firstName.value == "")                                  
+                        { 
+                            window.alert("Please enter your First Name."); 
+                            firstName.focus(); 
+                            return false; 
+                        } 
+
+                        if (lastName.value == "")                                  
+                        { 
+                            window.alert("Please enter your Last Name."); 
+                            lastName.focus(); 
+                            return false; 
+                        } 
+
+                        if (userName.value == "")                                  
+                        { 
+                            window.alert("Please enter your Username."); 
+                            userName.focus(); 
+                            return false; 
+                        } 
+
+                        if (hostel.value == "")                               
+                        { 
+                            window.alert("Please enter your hostel."); 
+                            hostel.focus(); 
+                            return false; 
+                        } 
+
+
+
+                        if (block.value == "")                           
+                        { 
+                            window.alert("Please enter your Block."); 
+                            block.focus(); 
+                            return false; 
+                        } 
+
+                        if (roomNo.value == "")                        
+                        { 
+                            window.alert("Please enter your Room Number."); 
+                            roomNo.focus(); 
+                            return false; 
+                        } 
+                        
+                        if (password.value == "")                        
+                        { 
+                            window.alert("Please enter your Password."); 
+                            password.focus(); 
+                            return false; 
+                        } 
+                        
+                        if (confirmPassword.value == "")                        
+                        { 
+                            window.alert("Please confirm your Password."); 
+                            confirmPassword.focus(); 
+                            return false; 
+                        } 
+                        
+                        if (confirmPassword.value == password)                        
+                        { 
+                            window.alert("Your current password does not match with your current password."); 
+                            confirmPassword.focus(); 
+                            return false; 
+                        } 
+
+
+                        return true; 
+                    }
+
+                var check = function() {
+                      if (document.getElementById('password').value ==
+                        document.getElementById('confirmPassword').value) {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerHTML = 'matching';
+                      } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = 'not matching';
+                      }
+                    }
+	       </script>
+		</div>
+	</div>
+
+
+</body>
+</html>
